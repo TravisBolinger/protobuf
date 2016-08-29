@@ -18,9 +18,14 @@ fi
 # Check that gtest is present.  Usually it is already there since the
 # directory is set up as an SVN external.
 if test ! -e gtest; then
-  echo "Google Test not present.  Fetching gtest-1.5.0 from the web..."
-  curl http://googletest.googlecode.com/files/gtest-1.5.0.tar.bz2 | tar jx
-  mv gtest-1.5.0 gtest
+
+  echo "Google Mock not present.  Fetching gtest-1.5.0 from the web..."
+
+  curl $curlopts -L -O https://github.com/google/googletest/archive/release-1.5.0.zip
+  unzip -q release-1.5.0.zip
+  rm release-1.5.0.zip
+  mv googletest-release-1.5.0 gtest
+  
 fi
 
 set -ex
